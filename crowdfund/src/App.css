@@ -1,0 +1,231 @@
+* {
+  border: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  height: 50px;
+}
+
+.footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+.camp-container {
+  min-height: 100%;
+  flex-flow: wrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.campaign-card {
+  display: flex;
+  gap: 10px;
+  border: 1px solid rgb(179, 178, 178);
+  margin: 20px;
+  border-radius: 10px;
+}
+.campaign-image {
+  width: 200px;
+}
+.campaign-image img {
+  width: 100%;
+  height: 100%;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.campaign-details {
+  padding: 10px;
+}
+.campaign-details button {
+  padding: 5px;
+  margin-right: 5px;
+  border-radius: 5px;
+}
+.campaign-details .upvote-button {
+  background-color: #4caf50;
+  color: whitesmoke;
+}
+.campaign-details .downvote-button {
+  background-color: #ff4d00;
+  color: whitesmoke;
+}
+
+/* .form-container {
+  min-height: 100vh;
+}
+
+.create-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+} */
+
+/* Form style */
+/* .main-content {
+  display: flex;
+}
+.name-desc {
+  display: flex;
+  flex-direction: column;
+}
+.img-amt {
+  display: flex;
+  flex-direction: column;
+} */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+}
+
+.create-form {
+  background-color: #f4f4f4;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.name-desc,
+.img-amt {
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+textarea {
+  width: 100%;
+  height: 150px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button[type="submit"] {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+/* header */
+.header .my-links {
+  margin: 10px;
+}
+
+/* View campaign */
+.vote-for-btn {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 10px;
+}
+.vote-against-btn {
+  background-color: #e30000;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 10px;
+}
+.contribute-btn {
+  background-color: #3300fd;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 10px;
+}
+.campaign-functions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  align-items: center;
+}
+.contribution-input {
+  border: 1px solid grey;
+  height: 30px;
+  padding: 10px;
+}
+
+.viewCampaign-container {
+}
+.campaign-view {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+}
+
+.search-form {
+  display: flex;
+  justify-content: center;
+}
+
+.search-btn {
+  margin-left: 10px;
+}
+
+.wallet-connect-btn {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px;
+  margin: 20px;
+  border-radius: 5px;
+  width: 200px;
+}
+.home-container {
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+.withdraw-btn {
+  background-color: #0000ff;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 10px;
+}
+.voting-div {
+  display: flex;
+}
+
+.viewCampaign-container span {
+  font-weight: bold;
+}
