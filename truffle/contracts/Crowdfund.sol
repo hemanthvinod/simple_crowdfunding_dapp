@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.19;
 
-
 contract Crowdfunding {
     struct Campaign {
         string name;
@@ -17,21 +16,22 @@ contract Crowdfunding {
         mapping(address => bool) voted;
     }
 
-struct CampaignData {
-    string name;
-    uint256 targetAmount;
-    uint256 deadline;
-    string description;
-    string image;
-    uint256 upvotes;
-    uint256 downvotes;
-    uint256 balance;
-    address owner;
-}
+    struct CampaignData {
+        string name;
+        uint256 targetAmount;
+        uint256 deadline;
+        string description;
+        string image;
+        uint256 upvotes;
+        uint256 downvotes;
+        uint256 balance;
+        address owner;
+    }
+
     mapping(uint256 => Campaign) campaigns;
-    uint256 nextCampaignId = 1; 
+    uint256 nextCampaignId = 1;
 
-
+    // Create a new campaign
     function createCampaign(
         string memory name,
         uint256 targetAmount,
@@ -52,6 +52,7 @@ struct CampaignData {
         return nextCampaignId - 1;
     }
 
+    // Contribute to a campaign
     function contribute(uint256 campaignId) public payable {
         Campaign storage campaign = campaigns[campaignId];
         require(
@@ -67,6 +68,7 @@ struct CampaignData {
         campaign.balance += msg.value;
     }
 
+    // Vote on a campaign
     function vote(uint256 campaignId, bool support) public {
         Campaign storage campaign = campaigns[campaignId];
         require(
@@ -84,11 +86,14 @@ struct CampaignData {
         campaign.voted[msg.sender] = true;
     }
 
+    // Withdraw funds from a successful campaign
     function withdraw(uint256 campaignId) public {
         Campaign storage campaign = campaigns[campaignId];
 
-        require(msg.sender == campaign.owner,
-         "Not the owner of the campaign");
+        require(
+            msg.sender == campaign.owner,
+            "Not the owner of the campaign"
+        );
         require(
             campaign.deadline <= block.timestamp,
             "Campaign deadline not reached"
@@ -105,6 +110,7 @@ struct CampaignData {
         payable(msg.sender).transfer(amount);
     }
 
+    // Refund funds from an unsuccessful campaign
     function refund(uint256 campaignId) public {
         Campaign storage campaign = campaigns[campaignId];
         require(
@@ -126,6 +132,7 @@ struct CampaignData {
         payable(msg.sender).transfer(amount);
     }
 
+    // Get the contribution amount of a contributor
     function getContributions(uint256 campaignId, address contributor)
         public
         view
@@ -135,6 +142,7 @@ struct CampaignData {
         return campaign.contributions[contributor];
     }
 
+    // Get the details of a campaign
     function getCampaign(uint256 campaignId)
         public
         view
@@ -163,27 +171,25 @@ struct CampaignData {
             campaign.balance
         );
     }
-    
+
+    // Get all campaigns
     function getAllCampaigns() public view returns (CampaignData[] memory) {
-    CampaignData[] memory campaignsData = new CampaignData[](nextCampaignId-1);
-    for (uint256 i = 1; i < nextCampaignId; i++) {
-        Campaign storage campaign = campaigns[i];
-        CampaignData memory data = CampaignData({
-            name: campaign.name,
-            targetAmount: campaign.targetAmount,
-            deadline: campaign.deadline,
-            description: campaign.description,
-            image: campaign.image,
-            upvotes: campaign.upvotes,
-            downvotes: campaign.downvotes,
-            balance: campaign.balance,
-            owner: campaign.owner
-        });
-        campaignsData[i-1] = data;
+        CampaignData[] memory campaignsData = new CampaignData[](nextCampaignId - 1);
+        for (uint256 i = 1; i < nextCampaignId; i++) {
+            Campaign storage campaign = campaigns[i];
+            CampaignData memory data = CampaignData({
+                name: campaign.name,
+                targetAmount: campaign.targetAmount,
+                deadline: campaign.deadline,
+                description: campaign.description,
+                image: campaign.image,
+                upvotes: campaign.upvotes,
+                downvotes: campaign.downvotes,
+                balance: campaign.balance,
+                owner: campaign.owner
+            });
+            campaignsData[i - 1] = data;
+        }
+        return campaignsData;
     }
-    return campaignsData;
-}
-
-
-
 }
