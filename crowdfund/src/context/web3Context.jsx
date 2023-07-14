@@ -19,6 +19,7 @@ const getEthereumContract = async () => {
   return crowdContract;
 };
 
+// eslint-disable-next-line react/prop-types
 export const Web3ContextProvider = ({ children }) => {
   const [currentAccount, setCurrentAccount] = useState("");
 

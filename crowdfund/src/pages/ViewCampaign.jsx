@@ -53,6 +53,8 @@ const ViewCampaign = () => {
     return <div>Loading...</div>;
   }
 
+  // link to show the image from ipfs
+
   const ipfsImageUrl = `https://ipfs.io/ipfs/${campaign.image}`;
 
   return (
